@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
             falling = false;
         }
         FirstMove();
-        bestScore = PlayerPrefs.GetInt("bestScore");//veriyi almak
+        bestScore = PlayerPrefs.GetInt("bestScore");
         bestScoreText.text = "Best Score: " + bestScore.ToString();
     }
 
@@ -66,10 +66,10 @@ public class PlayerController : MonoBehaviour
 
     void SpeedandPrint()
     {
-        speed += speed_up * Time.deltaTime;//Hýzlanma
+        speed += speed_up * Time.deltaTime;
 
         score += increase * speed * Time.deltaTime;
-        scoreText.text = ((int)score).ToString();//int dönüþtüyüp öyle to string yapmak
+        scoreText.text = ((int)score).ToString();
     }
     void Death()
     {
@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
             Destroy(gameObject, 4f);
         }
     }
-    private void OnCollisionExit(Collision collision)//collision: çýkýþ yaptýðýmýz nesnedir. ek zemin getirmek için
+    private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
@@ -96,10 +96,10 @@ public class PlayerController : MonoBehaviour
     }
     IEnumerator Remove(GameObject obj)
     {
-        yield return new WaitForSeconds(0.3f);//görsellik için
-        obj.AddComponent<Rigidbody>();//Zemin düþmedeki yerçekimi iþlemi
+        yield return new WaitForSeconds(0.3f);
+        obj.AddComponent<Rigidbody>();
 
-        yield return new WaitForSeconds(1f);//optimizasyon için
+        yield return new WaitForSeconds(1f);
         Destroy(obj.gameObject);
     }
     void FirstMove()
